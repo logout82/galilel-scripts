@@ -48,15 +48,18 @@ function download_node() {
   #cd $TMP_FOLDER >/dev/null 2>&1
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
-  wget -c https://github.com/Galilel-Project/galilel/releases/download/v2.0.0/galilel-v2.0.0-lin64.tar.gz
+
+wget https://github.com/Galilel-Project/galilel/releases/download/v3.0.0/galilel-v3.0.0-lin64.tar.gz >/dev/null 2>&1
   compile_error
-  tar xvzf galilel-v2.0.0-lin64.tar.gz >/dev/null 2>&1
-  cd galilel-v2.0.0-lin64/usr/bin
+  tar -xvzf galilel-v3.0.0-lin64.tar.gz >/dev/null 2>&1
+
+cd /root/galilel-v3.0.0-lin64/usr/bin/ >/dev/null 2>&1
+
   chmod +x $COIN_DAEMON && chmod +x $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  rm -R galilel-v2.0.0* >/dev/null 2>&1
+  rm -R galilel-v3.0.0* >/dev/null 2>&1
   clear
 }
 
