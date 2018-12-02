@@ -49,17 +49,17 @@ function download_node() {
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
 
-wget https://github.com/Galilel-Project/galilel/releases/download/v3.0.0/galilel-v3.0.0-lin64.tar.gz >/dev/null 2>&1
+wget -c https://galilel.cloud/downloads/wallets/galilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
   compile_error
-  tar -xvzf galilel-v3.0.0-lin64.tar.gz >/dev/null 2>&1
+  tar -xvzf galilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
 
-cd /root/galilel-v3.0.0-lin64/usr/bin/ >/dev/null 2>&1
+cd /root/galilel-v3.0.1-lin64/usr/bin/ >/dev/null 2>&1
 
   chmod +x $COIN_DAEMON && chmod +x $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  rm -R galilel-v3.0.0* >/dev/null 2>&1
+  rm -R galilel-v3.0.1* >/dev/null 2>&1
   clear
 }
 
@@ -107,11 +107,14 @@ EOF
 function snapshot_sync() {
 echo -e "Setup snapshot, please wait untill finished"
 cd $CONFIGFOLDER >/dev/null 2>&1
-wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
-tar xvzf bootstrap-latest.tar.gz >/dev/null 2>&1
-rm bootstrap-latest* >/dev/null 2>&1
-wget https://github.com/cryptosam212/masternode/raw/master/peers-gali.dat >/dev/null 2>&1
-mv peers-gali.dat peers.dat >/dev/null 2>&1
+
+wget -c https://galilel.cloud/bootstrap-intermediate.tar.gz >/dev/null 2>&1
+echo -e "extract bootsrap processing"
+tar -xvzf bootstrap-intermediate.tar.gz  >/dev/null 2>&1
+compile_error
+echo -e "extract bootsrap DONE"
+rm -r bootstrap-intermediate* >/dev/null 2>&1
+
 cd >/dev/null 2>&1
 }
 
