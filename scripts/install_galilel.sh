@@ -49,17 +49,16 @@ function download_node() {
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
 
-wget -c https://galilel.cloud/downloads/wallets/galilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
+wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.1.0/galilel-v3.1.0-lin64.tar.gz >/dev/null 2>&1
   compile_error
-  tar -xvzf galilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
+  tar -xvzf galilel-v3.1.0-lin64.tar.gz >/dev/null 2>&1
 
-cd /root/galilel-v3.0.1-lin64/usr/bin/ >/dev/null 2>&1
+cd /root/galilel-v3.1.0-lin64/usr/bin/ >/dev/null 2>&1
+chmod +x $COIN_DAEMON $COIN_CLI >/dev/null 2>&1
 
-  chmod +x $COIN_DAEMON && chmod +x $COIN_CLI
-  compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  rm -R galilel-v3.0.1* >/dev/null 2>&1
+  rm -R galilel-v3.1.0-lin64* >/dev/null 2>&1
   clear
 }
 
@@ -108,12 +107,10 @@ function snapshot_sync() {
 echo -e "Setup snapshot, please wait untill finished"
 cd $CONFIGFOLDER >/dev/null 2>&1
 
-wget -c https://galilel.cloud/bootstrap-intermediate.tar.gz >/dev/null 2>&1
-echo -e "extract bootsrap processing"
-tar -xvzf bootstrap-intermediate.tar.gz  >/dev/null 2>&1
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1A57xlrRk56vvdsFpN4qRiZNgYTPCe9mP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1A57xlrRk56vvdsFpN4qRiZNgYTPCe9mP" -O galilel-286199.zip && rm -rf /tmp/cookies.txt >/dev/null 2>&1
+unzip galilel-286199.zip >/dev/null 2>&1
 compile_error
-echo -e "extract bootsrap DONE"
-rm -r bootstrap-intermediate* >/dev/null 2>&1
+rm -r galilel-286199.zip >/dev/null 2>&1
 
 cd >/dev/null 2>&1
 }
