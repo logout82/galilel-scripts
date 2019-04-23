@@ -107,10 +107,12 @@ function snapshot_sync() {
 echo -e "Setup snapshot, please wait untill finished"
 cd $CONFIGFOLDER >/dev/null 2>&1
 
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1A57xlrRk56vvdsFpN4qRiZNgYTPCe9mP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1A57xlrRk56vvdsFpN4qRiZNgYTPCe9mP" -O galilel-286199.zip && rm -rf /tmp/cookies.txt >/dev/null 2>&1
-unzip galilel-286199.zip >/dev/null 2>&1
+wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
+echo -e "extract bootsrap processing"
+tar xvzf bootstrap-latest.tar.gz  >/dev/null 2>&1
 compile_error
-rm -r galilel-286199.zip >/dev/null 2>&1
+echo -e "extract bootsrap DONE"
+rm -r bootstrap-latest* >/dev/null 2>&1
 
 cd >/dev/null 2>&1
 }
